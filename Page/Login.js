@@ -1,5 +1,6 @@
 import React, {useEffect, useState } from 'react'
-import {AsyncStorage} from 'react-native'
+import {} from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import {Center, Input, Stack, Button} from 'native-base'
 import {BaseUrl} from '../Utils/BaseApi'
 import jwt_decode from 'jwt-decode'
@@ -17,11 +18,36 @@ export default function Login() {
         //   password:'123'
         // }).then(e=>console.log(jwt_decode(e.data.token)))
         
+        
       },[])
 
     function HandleSubmit(){
-         BaseUrl.post("/login", data).then(e=>console.log(jwt_decode(e.data.token)))
+         BaseUrl.post("/login", data).then(e=>AddDataToken(e.data.token))
     }
+
+    async function  AddDataToken(param){
+        try {
+            await AsyncStorage.setItem("@token",param)
+            console.log("ok")
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    
+const ShowData = async () => {
+ 
+      const jsonValue = await AsyncStorage.getItem('@token')
+      return jsonValue != null ? jsonValue : null;
+    
+}
+
+
+function ShowDataTrigger(){
+    ShowData().then(e=>console.log(e))
+}
+
+   
     return(
         <>
             <Center flex={1} backgroundColor="white">
@@ -44,6 +70,8 @@ export default function Login() {
                         secureTextEntry={true}
                     />
                     <Button size="lg" onPress={HandleSubmit} >  Submit </Button>
+                    <Button size="lg" onPress={ShowDataTrigger} >  Submit </Button>
+                    
 
                     </Stack>
                 </Center>
