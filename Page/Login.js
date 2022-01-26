@@ -5,7 +5,7 @@ import {Center, Input, Stack, Button} from 'native-base'
 import {BaseUrl} from '../Utils/BaseApi'
 import jwt_decode from 'jwt-decode'
 
-export default function Login() { 
+export default function Login({navigation}) { 
     const [data, setdata] = useState({
         email:"",
         password:""
@@ -22,7 +22,7 @@ export default function Login() {
       },[])
 
     function HandleSubmit(){
-         BaseUrl.post("/login", data).then(e=>AddDataToken(e.data.token))
+         BaseUrl.post("/login", data).then(e=>AddDataToken(e.data.token)).then(e=>ShowDataTrigger())
     }
 
     async function  AddDataToken(param){
@@ -38,7 +38,7 @@ export default function Login() {
 const ShowData = async () => {
  
       const jsonValue = await AsyncStorage.getItem('@token')
-      return jsonValue != null ? jsonValue : null;
+      return jsonValue != null ? navigation.push("home") : null;
     
 }
 
@@ -69,8 +69,8 @@ function ShowDataTrigger(){
                         onChangeText={e=>setdata({...data,password:e})}
                         secureTextEntry={true}
                     />
-                    <Button size="lg" onPress={HandleSubmit} >  Submit </Button>
-                    <Button size="lg" onPress={ShowDataTrigger} >  Submit </Button>
+                    <Button size="lg" onPress={HandleSubmit} >  Login. </Button>
+                    
                     
 
                     </Stack>

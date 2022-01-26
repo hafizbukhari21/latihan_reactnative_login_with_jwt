@@ -6,6 +6,7 @@ import React, {useEffect} from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './Page/Login'
+import Home from './Page/Home'
 
 export default function App() {
   
@@ -17,6 +18,7 @@ export default function App() {
       <NavigationContainer >
         <Stack.Navigator screenOptions ={{headerShown:false}}>
           <Stack.Screen name="login" component={Login}/>
+          <Stack.Screen name="home" component={Home}/>
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
