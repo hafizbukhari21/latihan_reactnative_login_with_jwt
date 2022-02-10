@@ -43,7 +43,7 @@ const ShowData = async () => {
 
       const jsonValue = await AsyncStorage.getItem('@token')
       setIsloading(false)
-      return jsonValue != null ? navigation.push("home") : null;
+      jsonValue != null ? navigation.push("home") : null;
     
 }
 
