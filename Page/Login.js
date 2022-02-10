@@ -70,7 +70,7 @@ function ShowDataTrigger(){
                         secureTextEntry={true}
                     />
                     <Button size="lg" onPress={HandleSubmit} >  Submit </Button>
-                    <Button size="lg" onPress={ShowDataTrigger} >  Submit </Button>
+                    <Button size="lg" onPress={ShowDataTrigger} >  Show trigger </Button>
                     
 
                     </Stack>
