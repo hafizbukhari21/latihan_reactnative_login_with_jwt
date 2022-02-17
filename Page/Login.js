@@ -5,7 +5,7 @@ import {Center, Input, Stack, Button} from 'native-base'
 import {BaseUrl} from '../Utils/BaseApi'
 import jwt_decode from 'jwt-decode'
 
-export default function Login() { 
+export default function Login({navigation}) { 
     const [data, setdata] = useState({
         email:"",
         password:""
@@ -70,7 +70,7 @@ function ShowDataTrigger(){
                         secureTextEntry={true}
                     />
                     <Button size="lg" onPress={HandleSubmit} >  Submit </Button>
-                    <Button size="lg" onPress={HandleSubmit} >  Register </Button>
+                    <Button size="lg" onPress={()=>navigation.navigate("register")} >  Register </Button>
                     <Button size="lg" onPress={ShowDataTrigger} >  Show trigger </Button>
                     
 

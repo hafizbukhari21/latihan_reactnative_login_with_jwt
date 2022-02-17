@@ -6,6 +6,7 @@ import React, {useEffect} from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './Page/Login'
+import Register from './Page/Register'
 
 export default function App() {
   
@@ -17,6 +18,7 @@ export default function App() {
       <NavigationContainer >
         <Stack.Navigator screenOptions ={{headerShown:false}}>
           <Stack.Screen name="login" component={Login}/>
+          <Stack.Screen name="register" component={Register}/>
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

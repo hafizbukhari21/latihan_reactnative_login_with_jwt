@@ -12,8 +12,8 @@ export default function Register (){
         name:""
     })
 
-    function Handlesubmit(){
-
+    function HandleSubmit(){
+        BaseUrl.post("/register",data).then(e=>console.log(e.data))
     }
 
     function ShowDataTrigger(){
@@ -33,7 +33,7 @@ export default function Register (){
                         }}
                         space = {4}
                     >
-                    <Input fontSize={20} variant="underlined" placeholder="Email" 
+                    <Input fontSize={20} variant="underlined" placeholder="Name" 
                         onChangeText={e=>setdata({...data,name:e})}
                     />
                     <Input fontSize={20} variant="underlined" placeholder="Email" 
@@ -51,5 +51,5 @@ export default function Register (){
                 </Center>
             </Center>
         </>
-
+     )
 }
