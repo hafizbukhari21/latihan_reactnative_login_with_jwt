@@ -3,52 +3,23 @@ import {} from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {Center, Input, Stack, Button} from 'native-base'
 import {BaseUrl} from '../Utils/BaseApi'
-import jwt_decode from 'jwt-decode'
 
-export default function Login() { 
+
+export default function Register (){
     const [data, setdata] = useState({
         email:"",
-        password:""
+        password:"",
+        name:""
     })
 
-    useEffect(()=>{
-        // BaseUrl.get("/showData").then(e=>console.log(e.data))
-        // BaseUrl.post("/login",{
-        //   email:'hafiz@gmail.com',
-        //   password:'123'
-        // }).then(e=>console.log(jwt_decode(e.data.token)))
-        
-        
-      },[])
+    function Handlesubmit(){
 
-    function HandleSubmit(){
-         BaseUrl.post("/login", data).then(e=>console.log(e.data.token))
     }
 
-    async function  AddDataToken(param){
-        try {
-            await AsyncStorage.setItem("@token",param)
-            console.log("ok")
-        } catch (error) {
-            console.log(error)
-        }
+    function ShowDataTrigger(){
+        
     }
-
-    
-const ShowData = async () => {
- 
-      const jsonValue = await AsyncStorage.getItem('@token')
-      return jsonValue != null ? jsonValue : null;
-    
-}
-
-
-function ShowDataTrigger(){
-    ShowData().then(e=>console.log(e))
-}
-
-   
-    return(
+     return(
         <>
             <Center flex={1} backgroundColor="white">
                 <Center
@@ -63,6 +34,9 @@ function ShowDataTrigger(){
                         space = {4}
                     >
                     <Input fontSize={20} variant="underlined" placeholder="Email" 
+                        onChangeText={e=>setdata({...data,name:e})}
+                    />
+                    <Input fontSize={20} variant="underlined" placeholder="Email" 
                         onChangeText={e=>setdata({...data,email:e})}
                     />
                     <Input fontSize={20} variant="underlined" placeholder="Password" 
@@ -70,7 +44,6 @@ function ShowDataTrigger(){
                         secureTextEntry={true}
                     />
                     <Button size="lg" onPress={HandleSubmit} >  Submit </Button>
-                    <Button size="lg" onPress={HandleSubmit} >  Register </Button>
                     <Button size="lg" onPress={ShowDataTrigger} >  Show trigger </Button>
                     
 
@@ -78,5 +51,5 @@ function ShowDataTrigger(){
                 </Center>
             </Center>
         </>
-    )
+
 }
