@@ -1,16 +1,21 @@
 import React, {useEffect, useState } from 'react'
 import {} from 'react-native'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import {Center, Input, Stack, Button} from 'native-base'
-import {BaseUrl} from '../Utils/BaseApi'
 import jwt_decode from 'jwt-decode'
+import {BaseUrl} from '../Utils/BaseApi'
 
-export default function Login() { 
+export default function Login() {
+
+  
+    const [data, setData] = useState({
+        email:"",
+        password:""
+    })
    
-    
 
-
-   
+    // function HandleSubmit(){
+    //     BaseUrl.post("/login",data).then(e=>console.log(jwt_decode(e.data.token)))
+    // }
     return(
         <>
             <Center flex={1} backgroundColor="white">
@@ -26,16 +31,13 @@ export default function Login() {
                         space = {4}
                     >
                     <Input fontSize={20} variant="underlined" placeholder="Email" 
+                    
                        
                     />
                     <Input fontSize={20} variant="underlined" placeholder="Password" 
-                        
-                        secureTextEntry={true}
+                       
                     />
                     <Button size="lg"  >  Submit </Button>
-                    
-                    
-
                     </Stack>
                 </Center>
             </Center>
