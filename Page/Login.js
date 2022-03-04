@@ -11,6 +11,8 @@ export default function Login() {
         email:"",
         password:""
     })
+
+    useEffect(()=>console.log(data), [data])
    
 
     // function HandleSubmit(){
@@ -31,8 +33,9 @@ export default function Login() {
                         space = {4}
                     >
                     <Input fontSize={20} variant="underlined" placeholder="Email" 
-                    
-                       
+                        onChangeText={e =>{
+                            setData({...data,email:e})
+                        }}
                     />
                     <Input fontSize={20} variant="underlined" placeholder="Password" 
                        
